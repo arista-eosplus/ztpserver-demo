@@ -1,7 +1,8 @@
 ---
 actions:
   -  
-    action: install_image
+    action: install_image 
+    always_execute: true
     attributes:
       url: files/images/vEOS.swi
       version: 4.13.5F

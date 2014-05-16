@@ -1,6 +1,6 @@
-definition: tor2
+definition: torb
 interfaces:
 - Ethernet1:
     device: veos-dc1-pod1-spine1
     port: Ethernet2
-name: tor2 for pod1
+name: tor2b for pod1
