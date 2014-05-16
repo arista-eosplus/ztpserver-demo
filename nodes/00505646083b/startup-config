@@ -1,4 +1,4 @@
-! Startup-config last modified at  Tue May 13 19:11:04 2014 by admin
+! Startup-config last modified at  Tue May 13 19:18:47 2014 by admin
 ! device: veos-dc1-pod1-tor1 (vEOS, EOS-4.13.5F)
 !
 ! boot system flash:/vEOS.swi
@@ -24,6 +24,9 @@ username admin privilege 15 role network-admin secret 5 $1$Td9ERr4v$BxQ6HhnV9rX8
 !
 vlan 10
    name foo
+!
+vlan 20
+   name bar
 !
 interface Ethernet1
 !
