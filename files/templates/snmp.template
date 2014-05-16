@@ -1,0 +1,4 @@
+!
+snmp-server community public ro
+snmp-server host $ztpserver version 2c public
+!
