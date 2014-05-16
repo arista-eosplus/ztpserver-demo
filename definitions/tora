@@ -1,9 +1,6 @@
 ---
 actions:
-attributes:
-  variables:
-    ztpserver: 192.168.100.100
-  -
+  -  
     action: install_image
     attributes:
       url: files/images/vEOS.swi
@@ -37,11 +34,13 @@ attributes:
     action: add_config
     attributes:
       url: files/templates/snmp.template
+      variables: $variables
     name: "configure snmpserver"
   -
     action: add_config
     attributes:
       url: files/templates/configpush.template
+      variables: $variables
     name: "configure config push to server"
   -
     action: copy_file
@@ -52,4 +51,7 @@ attributes:
       overwrite: if-missing
       src_url: files/automate/ztpprep
     name: "automate reload"
+attributes:
+  variables:
+    ztpserver: 192.168.100.100
 name: tora

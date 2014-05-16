@@ -3,15 +3,28 @@ neighbors:
   Ethernet1:
   - device: veos-dc1-pod1-spine1
     port: Ethernet1
+  Ethernet2:
+  - device: veos-dc1-pod1-tor3
+    port: Ethernet2
   Ethernet3:
   - device: localhost
     port: Ethernet4
+  - device: veos-dc1-pod1-tor3
+    port: Ethernet4
+  - device: veos-dc1-pod1-tor3
+    port: Ethernet3
   Ethernet4:
   - device: localhost
+    port: Ethernet3
+  - device: veos-dc1-pod1-tor3
+    port: Ethernet4
+  - device: veos-dc1-pod1-tor3
     port: Ethernet3
   Management1:
   - device: ztpserver
     port: 000c.29c1.68da
+  - device: veos-dc1-pod1-tor3
+    port: Management1
   - device: veos-dc1-pod1-spine1
     port: Management1
 systemmac: 00505646083b
