@@ -1,0 +1,48 @@
+--- 
+actions: 
+  - 
+    action: install_image
+    attributes: 
+      url: files/images/vEOS.swi
+      version: 4.13.5F
+    name: "validate image"
+  - 
+    action: add_config
+    attributes: 
+      url: files/templates/ma1.template
+      variables: 
+        ipaddress: allocate('mgmt_subnet')
+    name: "configure ma1"
+  - 
+    action: add_config
+    attributes: 
+      url: files/templates/system.template
+      variables: 
+        hostname: allocate('tor_hostnames')
+    name: "configure global system"
+  - 
+    action: add_config
+    attributes: 
+      url: files/templates/login.template
+    name: "configure auth"
+  - 
+    action: add_config
+    attributes: 
+      url: files/templates/ztpprep.template
+    name: "configure ztpprep alias"
+  - 
+    action: add_config
+    attributes: 
+      url: files/templates/configpush.template
+    name: "configure config push to server"
+  - 
+    action: copy_file
+    always_execute: true
+    attributes: 
+      dst_url: /mnt/flash/
+      mode: 777
+      overwrite: if-missing
+      src_url: files/automate/ztpprep
+    name: "automate reload"
+name: tora
+

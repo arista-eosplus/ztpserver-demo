@@ -1,0 +1,24 @@
+actions:
+  - name: validate image
+    action: install_image
+    attributes:
+      software_version: 4.13.5F
+      software_url: files/images/vEOS.swi
+  - name: configure ma1
+    action: add_config
+    attributes:
+      url: files/templates/ma1.template
+      variables:
+        #ipaddress: allocate('mgmt_subnet')
+        ipaddress: 192.168.100.210/24
+  - name: configure global system 
+    action: add_config
+    attributes:
+      url: files/templates/system.template
+      variables:
+        #hostname: allocate('tor_hostnames')
+        hostname: foo
+  - name: configure auth 
+    action: add_config
+    attributes:
+      url: files/templates/login.template
