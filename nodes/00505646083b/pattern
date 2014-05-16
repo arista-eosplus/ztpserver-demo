@@ -1,0 +1,6 @@
+definition: tor1
+interfaces:
+- Ethernet1:
+    device: veos-dc1-pod1-spine1
+    port: Ethernet1
+name: tor1 for pod1

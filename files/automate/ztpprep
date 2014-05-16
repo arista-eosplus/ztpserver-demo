@@ -1,0 +1,6 @@
+#!/bin/bash
+#delete system files and reload the system for ztp
+rm -rf /mnt/flash/startup-config
+rm -rf /mnt/flash/*extensions*
+shutdown -r now
+

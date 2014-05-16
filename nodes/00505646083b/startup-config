@@ -1,0 +1,38 @@
+! Startup-config last modified at  Mon May 12 19:42:51 2014 by admin
+! device: veos-dc1-pod1-tor1 (vEOS, EOS-4.13.5F)
+!
+! boot system flash:/vEOS.swi
+!
+alias ztpprep bash sudo /mnt/flash/ztpprep
+!
+event-handler configpush
+   trigger on-startup-config
+   action bash export SYSMAC=`Cli -p 15 -c 'show ver | grep MAC | cut -d" " -f 5' | sed 's/[.]*//g'`; curl http://192.168.100.100:8080/nodes/$SYSMAC/startup-config -H "content-type: text/plain" --data-binary @/mnt/flash/startup-config -X PUT
+!
+transceiver qsfp default-mode 4x10G
+!
+hostname veos-dc1-pod1-tor1
+!
+spanning-tree mode mstp
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret 5 $1$Qq7d1CWz$HS7Xgxou7ltk9hXDLkjj2.
+!
+vlan 2,4,6
+!
+interface Ethernet1
+!
+interface Ethernet2
+!
+interface Ethernet3
+!
+interface Ethernet4
+!
+interface Management1
+   ip address 192.168.100.214/24
+!
+no ip routing
+!
+!
+end

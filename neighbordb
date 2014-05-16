@@ -1,0 +1,9 @@
+patterns:
+  - name: tor1 for pod1 
+    definition: tor1
+    interfaces:
+      - Ethernet1: veos-dc1-pod1-spine1:Ethernet1
+  - name: tor2 for pod1
+    definition: tor2
+    interfaces:
+      - Ethernet1: veos-dc1-pod1-spine1:Ethernet2

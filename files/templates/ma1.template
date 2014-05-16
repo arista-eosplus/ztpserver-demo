@@ -1,0 +1,3 @@
+interface Management1
+  ip address $ipaddress
+  no shutdown

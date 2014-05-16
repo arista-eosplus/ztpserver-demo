@@ -1,0 +1,6 @@
+patterns:
+  - name: static_node
+    node: 005056761aae
+    interfaces:
+      - any: any:any
+
