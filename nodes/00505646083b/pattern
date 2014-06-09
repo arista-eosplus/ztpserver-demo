@@ -1,6 +1,0 @@
-definition: tora
-interfaces:
-- Ethernet1:
-    device: veos-dc1-pod1-spine1
-    port: Ethernet1
-name: tora for pod1
