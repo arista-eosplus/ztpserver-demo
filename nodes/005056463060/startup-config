@@ -1,0 +1,20 @@
+
+interface Management1
+  ip address 192.168.100.211/24
+  no shutdown
+
+hostname veos-dc1-pod1-tor3
+
+
+username admin priv 15 secret admin
+
+alias ztpprep bash sudo /mnt/flash/ztpprep
+
+!
+snmp-server community public ro
+snmp-server host 192.168.100.100 version 2c public
+!
+
+event-handler configpush
+   trigger on-startup-config
+   action bash export SYSMAC=`Cli -p 15 -c 'show ver | grep MAC | cut -d" " -f 5' | sed 's/[.]*//g'`; curl http://192.168.100.100:8080/nodes/$SYSMAC/startup-config -H "content-type: text/plain" --data-binary @/mnt/flash/startup-config -X PUT

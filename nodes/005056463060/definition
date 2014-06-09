@@ -1,10 +1,6 @@
 ---
 actions:
-<<<<<<< HEAD
-  -
-=======
   -  
->>>>>>> FETCH_HEAD
     action: install_image
     always_execute: true
     attributes:
@@ -58,9 +54,5 @@ actions:
     name: "automate reload"
 attributes:
   variables:
-<<<<<<< HEAD
-    ztpserver: 172.16.130.10
-=======
     ztpserver: 192.168.100.100
->>>>>>> FETCH_HEAD
 name: torb
