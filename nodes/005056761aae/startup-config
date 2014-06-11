@@ -7,18 +7,18 @@ alias ztpprep bash sudo /mnt/flash/ztpprep
 !
 event-handler configpush
    trigger on-startup-config
-   action bash export SYSMAC=`Cli -p 15 -c 'show ver | grep MAC | cut -d" " -f 5' | sed 's/[.]*//g'`; curl http://192.168.100.100:8080/nodes/$SYSMAC/startup-config -H "content-type: text/plain" --data-binary @/mnt/flash/startup-config -X PUT
+   action bash export SYSMAC=`Cli -p 15 -c 'show ver | grep MAC | cut -d" " -f 5' | sed 's/[.]*//g'`; curl http://172.16.130.10:8080/nodes/$SYSMAC/startup-config -H "content-type: text/plain" --data-binary @/mnt/flash/startup-config -X PUT
 !
 transceiver qsfp default-mode 4x10G
 !
-logging host 192.168.100.100
+logging host 172.16.130.10
 !
 hostname veos-dc1-pod1-spine1
 !
-ntp server 192.168.100.100
+ntp server 172.16.130.10
 !
 snmp-server community public ro
-snmp-server host 192.168.100.100 version 2c public
+snmp-server host 172.16.130.10 version 2c public
 !
 spanning-tree mode mstp
 !
@@ -42,11 +42,11 @@ interface Ethernet3
 interface Ethernet4
 !
 interface Management1
-   ip address 192.168.100.201/24
+   ip address 172.16.130.20/24
 !
 interface Vlan1
    ip address 10.10.10.1/24
-   ip helper-address 192.168.100.100
+   ip helper-address 172.16.130.10
 !
 interface Vlan2
    ip address 10.10.20.1/24
@@ -54,7 +54,7 @@ interface Vlan2
 ip access-list open
    10 permit ip any any
 !
-ip route 0.0.0.0/0 192.168.100.100
+ip route 0.0.0.0/0 172.16.130.10
 !
 ip routing
 !
