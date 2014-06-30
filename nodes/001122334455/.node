@@ -13,5 +13,5 @@ neighbors:
     port: Management1
   - device: veos-dc1-pod1-tor2
     port: Management1
-systemmac: 005056761aae
+systemmac: 001122334455
 version: 4.13.5F
