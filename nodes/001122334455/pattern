@@ -1,6 +1,6 @@
-patterns:
-  - name: static_node
-    node: 001122334455
-    interfaces:
-      - any: any:any
+name: static_node
+node: 001122334455
+definition: null
+interfaces:
+  - any: any:any
 
