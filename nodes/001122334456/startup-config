@@ -1,0 +1,65 @@
+! Startup-config last modified at  Wed Apr 30 00:49:09 2014 by admin
+! device: veos-dc1-pod1-spine2 (vEOS, EOS-4.13.5F)
+!
+! boot system flash:/vEOS.swi
+!
+alias ztpprep bash sudo /mnt/flash/ztpprep
+!
+event-handler configpush
+   trigger on-startup-config
+   action bash export SYSMAC=`Cli -p 15 -c 'show ver | grep MAC | cut -d" " -f 5' | sed 's/[.]*//g'`; curl http://172.16.130.10:8080/nodes/$SYSMAC/startup-config -H "content-type: text/plain" --data-binary @/mnt/flash/startup-config -X PUT
+!
+transceiver qsfp default-mode 4x10G
+!
+logging host 172.16.130.10
+!
+hostname veos-dc1-pod1-spine2
+!
+ntp server 172.16.130.10
+!
+snmp-server community public ro
+snmp-server host 172.16.130.10 version 2c public
+!
+spanning-tree mode mstp
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret 5 $1$mwkIWhpb$xRmHyEEva3CPzo3fAsD///
+!
+vlan 2
+   name production
+!
+interface Ethernet1
+   description veos-dc1-pod1-tor1
+   switchport mode trunk
+!
+interface Ethernet2
+   description veos-dc1-pod1-tor2
+   switchport mode trunk
+!
+interface Ethernet3
+!
+interface Ethernet4
+!
+interface Management1
+   ip address 172.16.130.21/24
+!
+interface Vlan1
+   ip address 10.10.10.2/24
+   ip helper-address 172.16.130.10
+!
+interface Vlan2
+   ip address 10.10.20.2/24
+!
+ip access-list open
+   10 permit ip any any
+!
+ip route 0.0.0.0/0 172.16.130.10
+!
+ip routing
+!
+control-plane
+   ip access-group open in
+!
+!
+end
