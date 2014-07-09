@@ -1,0 +1,17 @@
+model: vEOS
+neighbors:
+  Ethernet1:
+  - device: localhost
+    port: Ethernet1
+  Ethernet2:
+  - device: veos-dc1-pod1-tor2
+    port: Ethernet1
+  Management1:
+  - device: ztpserver
+    port: 000c.29c1.68da
+  - device: localhost
+    port: Management1
+  - device: veos-dc1-pod1-tor2
+    port: Management1
+systemmac: 001122334455
+version: 4.13.5F
