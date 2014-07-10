@@ -1,0 +1,20 @@
+no spanning-tree vlan $vlan
+
+vlan $vlan
+  trunk group $trkgrp
+
+interface Port-Channel$po
+  switchport mode trunk
+  switchport trunk group $trkgrp
+
+interface ethernet3
+  channel-group $po mode active
+
+interface vlan$vlan
+  ip address $ipaddress/$subnet
+
+mlag configuration
+  domain-id $domain
+  peer-address $peer
+  local-interface Vlan$vlan
+  peer-link Port-Channel$po

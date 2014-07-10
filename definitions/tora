@@ -44,6 +44,19 @@ actions:
       variables: $variables
     name: "configure config push to server"
   -
+    action: add_config
+    attributes:
+      url: files/templates/mlag.template
+      variables:
+        vlan: 4094
+        ipaddress: 10.0.0.1
+        subnet: 30
+        po: 10
+        trkgrp: mlagpeer
+        domain: mlag1
+        peer: 10.0.0.2
+    name: "configure mlag"
+  -
     action: copy_file
     always_execute: true
     attributes:
