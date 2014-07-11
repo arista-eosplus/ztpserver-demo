@@ -26,6 +26,7 @@ actions:
       url: files/templates/system.template
       variables:
         hostname: allocate('tor_hostnames')
+        ivariables: $variables
     name: "configure global system"
     onstart: "Starting to add basic system config"
     onsuccess: "SUCCESS: basic config added"
