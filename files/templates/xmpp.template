@@ -1,0 +1,9 @@
+!
+management xmpp
+  no shutdown
+  server im.ztps-test.com
+  username $user@im.ztps-test.com password eosplus
+  switch-group all@conference.im.ztps-test.com
+  switch-group tor@conference.im.ztps-test.com
+  domain im.ztps-test.com
+!
