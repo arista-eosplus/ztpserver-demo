@@ -1,0 +1,6 @@
+name: static_node
+node: 001122334457
+definition: null
+interfaces:
+  - any: any:any
+
