@@ -1,0 +1,7 @@
+!
+event-handler autobgpint
+   trigger on-boot
+   action bash python /mnt/flash/bgpautoinf.py
+   delay 60
+   asynchronous
+!

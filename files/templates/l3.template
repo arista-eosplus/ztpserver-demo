@@ -1,0 +1,29 @@
+!
+vlan 100
+! 
+interface Ethernet 1
+ no switchport
+! 
+interface Ethernet 2
+ no switchport
+!
+interface Vlan100
+   no autostate
+   ip address $ipvlan100
+   ip virtual-router address 10.100.1.1
+!
+interface Loopback0
+ ip address $loopback
+!
+ip virtual-router mac-address 00:1c:73:00:00:99
+!
+ip routing
+!
+router bgp 65002
+ bgp log-neighbor-changes
+ maximum-paths 16 ecmp 16
+ bgp listen range 10.1.0.0/16 peer-group ztpleaf remote-as 65001
+ neighbor ztpleaf peer-group
+ neighbor ztpleaf maximum-routes 12000 
+ redistribute connected
+!
