@@ -4,8 +4,18 @@ snmp-server community public ro
 snmp-server host $ztpserver version 2c public
 !
 ip name-server vrf default $ztpserver
+ip domain-name ztps-test.com
 !
 logging host $ztpserver
 !
 ntp server $ztpserver
+!
+management api http-commands
+   no shutdown
+!
+lldp timer 5
+!
+management cvx
+  no shutdown
+  server host 172.16.130.52
 !
