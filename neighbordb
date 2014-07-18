@@ -2,8 +2,8 @@ patterns:
   - name: tora for pod1 
     definition: tora
     interfaces:
-      - Ethernet1: veos-dc1-pod1-spine1:Ethernet1
-  - name: tor2b for pod1
+      - Ethernet1: veos-dc1-pod1-spine1.ztps-test.com:Ethernet1
+  - name: torb for pod1
     definition: torb
     interfaces:
-      - Ethernet1: veos-dc1-pod1-spine1:Ethernet2
+      - Ethernet1: veos-dc1-pod1-spine1.ztps-test.com:Ethernet2

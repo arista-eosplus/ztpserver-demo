@@ -1,0 +1,9 @@
+!
+cvx
+   no shutdown
+   service vxlan
+   service openstack
+      no shutdown
+   service debug
+!
+

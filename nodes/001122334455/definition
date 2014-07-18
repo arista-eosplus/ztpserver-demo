@@ -1,5 +1,15 @@
 --- 
 actions: 
+  -
+    action: install_image
+    always_execute: true
+    attributes:
+      url: files/images/vEOS.swi
+      version: 4.13.5F
+    name: "validate image"
+    onstart: "Starting to install image"
+    onsuccess: "SUCCESS: 4.13.5F installed"
+    onfailure: "FAIL: IM nick@arista.com for help"
   - 
     action: copy_file
     always_execute: true
@@ -10,4 +20,3 @@ actions:
       mode: 777
     name: "automate reload"
 name: spine1
-

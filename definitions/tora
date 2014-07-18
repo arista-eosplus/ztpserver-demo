@@ -64,6 +64,31 @@ actions:
     onsuccess: "SUCCESS: XMPP configured"
     onfailure: "FAIL: IM nick@arista.com for help"
   -
+    action: add_config
+    attributes:
+      url: files/templates/l3.template
+      variables:
+        loopback: allocate('ip_loopback')
+        ipvlan100: allocate('ip_vlan100')
+    name: "configure MLAG, VARP, BGP"
+    onstart: "Starting to L3 config"
+    onsuccess: "SUCCESS: L3 config added"
+    onfailure: "FAIL: IM nick@arista.com for help"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/bgpauto.template
+    name: "configure bgp interface automation event-handler"
+  -
+    action: copy_file
+    always_execute: true
+    attributes:
+      dst_url: /mnt/flash/
+      mode: 777
+      overwrite: if-missing
+      src_url: files/automate/bgpautoinf.py
+    name: "automate BGP peer interface config"
+  -
     action: copy_file
     always_execute: true
     attributes:

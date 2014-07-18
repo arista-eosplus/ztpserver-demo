@@ -18,3 +18,4 @@ mlag configuration
   peer-address $peer
   local-interface Vlan$vlan
   peer-link Port-Channel$po
+  reload-delay 30

@@ -15,7 +15,3 @@ management api http-commands
 !
 lldp timer 5
 !
-management cvx
-  no shutdown
-  server host 172.16.130.52
-!

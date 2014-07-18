@@ -1,0 +1,77 @@
+---
+actions:
+  -
+    action: install_image
+    always_execute: true
+    attributes:
+      url: files/images/vEOS.swi
+      version: 4.13.5F
+    name: "validate image"
+    onstart: "Starting to install image"
+    onsuccess: "SUCCESS: 4.13.5F installed"
+    onfailure: "FAIL: IM nick@arista.com for help"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/ma1.template
+      variables:
+        ipaddress: 172.16.130.52/24
+    name: "configure ma1"
+    onstart: "Starting to configure ma1"
+    onsuccess: "SUCCESS: ma1 configure"
+    onfailure: "FAIL: IM nick@arista.com for help"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/cvxsystem.template
+      variables:
+        hostname: veos-dc1-pod1-cvx
+        ztpserver: 172.16.130.10
+    name: "configure global system"
+    onstart: "Starting to add basic system config"
+    onsuccess: "SUCCESS: basic config added"
+    onfailure: "FAIL: IM nick@arista.com for help"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/login.template
+    name: "configure auth"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/ztpprep.template
+    name: "configure ztpprep alias"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/cvx.template
+    name: "configure cvx server"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/configpush.template
+      variables: $variables
+    name: "configure config push to server"
+  -
+    action: add_config
+    attributes:
+      url: files/templates/xmpp.template
+      variables:
+        user: cvx
+    name: "configure xmpp"
+    onstart: "Starting to configure XMPP"
+    onsuccess: "SUCCESS: XMPP configured"
+    onfailure: "FAIL: IM nick@arista.com for help"
+  -
+    action: copy_file
+    always_execute: true
+    attributes:
+      dst_url: /mnt/flash/
+      mode: 777
+      overwrite: if-missing
+      src_url: files/automate/ztpprep
+    name: "automate reload"
+attributes:
+  variables:
+    ztpserver: 172.16.130.10
+name: cvx
