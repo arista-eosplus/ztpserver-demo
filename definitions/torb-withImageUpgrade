@@ -1,6 +1,16 @@
 ---
 actions:
   -
+    action: install_image
+    always_execute: true
+    attributes:
+      url: files/images/vEOS.swi
+      version: 4.13.5F
+    name: "validate image"
+    onstart: "Starting to install image"
+    onsuccess: "SUCCESS: 4.13.5F installed"
+    onfailure: "FAIL: IM nick@arista.com for help"
+  -
     action: add_config
     attributes:
       url: files/templates/ma1.template
@@ -43,12 +53,12 @@ actions:
       url: files/templates/mlag.template
       variables:
         vlan: 4094
-        ipaddress: 10.0.0.1
+        ipaddress: 10.0.0.2
         subnet: 30
         po: 10
         trkgrp: mlagpeer
         domain: mlag1
-        peer: 10.0.0.2
+        peer: 10.0.0.1
     name: "configure mlag"
     onstart: "Starting to configure MLAG"
     onsuccess: "SUCCESS: MLAG configured"
@@ -75,4 +85,4 @@ actions:
 attributes:
   variables:
     ztpserver: 172.16.130.10
-name: tora
+name: torb

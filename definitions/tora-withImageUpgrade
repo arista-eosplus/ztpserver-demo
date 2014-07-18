@@ -1,6 +1,16 @@
 ---
 actions:
   -
+    action: install_image
+    always_execute: true
+    attributes:
+      url: files/images/vEOS.swi
+      version: 4.13.5F
+    name: "validate image"
+    onstart: "Starting to install image"
+    onsuccess: "SUCCESS: 4.13.5F installed"
+    onfailure: "FAIL: IM nick@arista.com for help"
+  -
     action: add_config
     attributes:
       url: files/templates/ma1.template
