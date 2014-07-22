@@ -1,6 +1,4 @@
 name: static_node
-node: 001122334455
-definition: null
 interfaces:
   - any: any:any
 
