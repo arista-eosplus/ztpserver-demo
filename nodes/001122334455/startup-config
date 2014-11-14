@@ -92,5 +92,7 @@ management xmpp
    switch-group spine@conference.im.ztps-test.com
    domain im.ztps-test.com
 !
+management api http-commands
+   no shutdown
 !
 end
