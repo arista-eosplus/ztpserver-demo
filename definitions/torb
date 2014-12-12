@@ -58,7 +58,7 @@ actions:
     attributes:
       url: files/templates/xmpp.template
       variables:
-        user: lookup('tor_hostnames')
+        user: allocate('tor_hostnames')
     name: "configure xmpp"
     onstart: "Starting to configure XMPP"
     onsuccess: "SUCCESS: XMPP configured"
