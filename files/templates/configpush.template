@@ -1,3 +1,6 @@
+
 event-handler configpush
    trigger on-startup-config
    action bash export SYSMAC=`FastCli -p 15 -c 'show ver | grep MAC | cut -d" " -f 5' | sed 's/[.]*//g'`; curl http://$ztpserver:8080/nodes/$SYSMAC/startup-config -H "content-type: text/plain" --data-binary @/mnt/flash/startup-config -X PUT
+!  For non-default VRF, use:
+!  action bash export SYSMAC=`FastCli -p 15 -c 'show ver | grep MAC | cut -d" " -f 5' | sed 's/[.]*//g'`; ip netns exec ns-<VRF-NAME> curl http://$ztpserver::8080/nodes/$SYSMAC/startup-config -H "content-type: text/plain" --data-binary @/mnt/flash/startup-config -X PUT
