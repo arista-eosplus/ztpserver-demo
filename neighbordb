@@ -1,9 +1,11 @@
+variables:
+  pod1_spine: includes("pod1-spine1")
 patterns:
-  - name: tora for pod1 
+  - name: tora for pod1
     definition: tora
     interfaces:
-      - Ethernet1: veos-dc1-pod1-spine1.ztps-test.com:Ethernet1
+      - Ethernet1: $pod1_spine:Ethernet1
   - name: torb for pod1
     definition: torb
     interfaces:
-      - Ethernet1: veos-dc1-pod1-spine1.ztps-test.com:Ethernet2
+      - Ethernet1: $pod1_spine:Ethernet2
